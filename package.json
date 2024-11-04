@@ -1,0 +1,27 @@
+{
+  "name": "fake-oauth-server",
+  "version": "1.0.0",
+  "description": " A fake OAuth 2.0 server implementing Code flow with PKCE",
+  "main": "index.ts",
+  "scripts": {
+    "dev": "tsx watch index.ts"
+  },
+  "keywords": [],
+  "author": "Michele Stieven",
+  "license": "MIT",
+  "dependencies": {
+    "cors": "2.8.5",
+    "ejs": "^3.1.10",
+    "express": "4.21.1",
+    "jsonwebtoken": "^9.0.2",
+    "oidc-provider": "8.5.2"
+  },
+  "devDependencies": {
+    "@types/cors": "2.8.17",
+    "@types/express": "5.0.0",
+    "@types/jsonwebtoken": "^9.0.7",
+    "@types/node": "22.8.7",
+    "tsx": "4.19.2",
+    "typescript": "5.6.3"
+  }
+}
