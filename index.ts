@@ -49,10 +49,10 @@ app.get('/.well-known/openid-configuration', (req, res) => {
   res.json(oidcConfiguration);
 });
 
-// Token expiration times
-const ACCESS_TOKEN_EXPIRATION = '15m';
-const REFRESH_TOKEN_EXPIRATION = '7d';
-const ID_TOKEN_EXPIRATION = '1h';
+// Token expiration times in seconds
+const ACCESS_TOKEN_EXPIRATION = 2 * 60; // 2 min
+const REFRESH_TOKEN_EXPIRATION = 60 * 60 * 24 * 7; // 7 days
+const ID_TOKEN_EXPIRATION = 60 * 60; // 1h
 
 // Mock
 const revokedTokens = new Set();
@@ -141,7 +141,7 @@ app.post('/token', (req: Request, res: Response) => {
       refresh_token: refreshToken,
       id_token: idToken,
       token_type: 'Bearer',
-      expires_in: 15 * 60,
+      expires_in: ACCESS_TOKEN_EXPIRATION,
     });
     return;
   }
@@ -184,7 +184,7 @@ app.post('/token', (req: Request, res: Response) => {
         access_token: newAccessToken,
         refresh_token: newRefreshToken,
         token_type: 'Bearer',
-        expires_in: 15 * 60,
+        expires_in: ACCESS_TOKEN_EXPIRATION,
       });
       return;
     } catch (error) {
